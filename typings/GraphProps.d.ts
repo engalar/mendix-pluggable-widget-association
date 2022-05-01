@@ -4,17 +4,16 @@
  * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
-import { EditableValue, ListValue, ListAttributeValue } from "mendix";
+import { ListValue, ListAttributeValue, ModifiableValue } from "mendix";
 
 export interface GraphContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    sampleText: string;
-    attribute?: EditableValue<string>;
-    datasource: ListValue;
-    att2?: ListAttributeValue<string>;
+    reference: ModifiableValue<ObjectItem>;
+    optionsSource?: ListValue;
+    displayValue?: ListAttributeValue<string>;
 }
 
 export interface GraphPreviewProps {
@@ -22,8 +21,7 @@ export interface GraphPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    sampleText: string;
-    attribute: string;
-    datasource: {} | { type: string } | null;
-    att2: string;
+    reference: string;
+    optionsSource: {} | { type: string } | null;
+    displayValue: string;
 }

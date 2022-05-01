@@ -3,16 +3,17 @@ import { GraphContainerProps } from "../typings/GraphProps";
 import { ValueStatus } from "mendix";
 
 export default function (props: GraphContainerProps) {
-    console.log(eval("{a:1}"));
     const value = useMemo(() => {
-        if (props.attribute && props.attribute.status === ValueStatus.Available) {
-            return props.attribute.value;
+        if (props.optionsSource && props.optionsSource.status === ValueStatus.Available) {
+            return props.optionsSource.items!.map(obj => props.displayValue?.get(obj).value!);
         }
-    }, [props.attribute]);
+    }, [props.optionsSource]);
+
+    console.log(props.reference.value);
 
     return (
         <div>
-            hello {props.sampleText} and your value is {value}
+            your value is {value}
         </div>
     );
 }
